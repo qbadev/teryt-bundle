@@ -3,8 +3,8 @@
 	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-	<entity repository-class="Tkuska\TerytBundle\Repository\PowiatRepository"
-		name="Tkuska\TerytBundle\Entity\Powiat" table="teryt_powiaty">
+	<entity repository-class="Qbadev\TerytBundle\Repository\PowiatRepository"
+		name="Qbadev\TerytBundle\Entity\Powiat" table="teryt_powiaty">
 		<id name="id" type="integer" column="id">
 			<generator strategy="AUTO" />
 		</id>
