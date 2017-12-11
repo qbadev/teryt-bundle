@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+	<entity repository-class="Tkuska\TerytBundle\Repository\MiejscowoscRepository"
+		name="Tkuska\TerytBundle\Entity\Miejscowosc" table="teryt_miejscowosci">
+		<id name="id" type="integer" column="id">
+			<generator strategy="AUTO" />
+		</id>
+		<field name="woj" type="string" column="WOJ" length="2" />
+		<field name="pow" type="string" column="POW" length="2" />
+		<field name="gmi" type="string" column="GMI" length="2" />
+		<field name="rodz_gmi" type="string" column="RODZ_GMI" length="1" />
+		<field name="rm" type="string" column="RM" length="2" />
+		<field name="mz" type="string" column="MZ" length="2" />
+		<field name="nazwa" type="string" column="NAZWA" length="100" />
+		<field name="sym" type="string" column="SYM" length="7" />
+		<field name="sympod" type="string" column="SYMPOD" length="7" />
+		<field name="stan_na" type="date" column="STAN_NA" />
+                <many-to-one target-entity="Wojewodztwo" field="wojewodztwo" inversed-by="miejscowosci"/>
+                <many-to-one target-entity="Powiat" field="powiat" inversed-by="miejscowosci" />
+                <many-to-one target-entity="Gmina" field="gmina" inversed-by="miejscowosci" />
+                <one-to-many target-entity="Ulica" mapped-by="miejscowosc" field="ulice" />
+                <indexes>
+                    <index columns="woj,pow,gmi,rodz_gmi,sym"/>
+                </indexes>
+	</entity>
+</doctrine-mapping>

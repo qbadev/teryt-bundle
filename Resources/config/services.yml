@@ -1,0 +1,4 @@
+services:
+#    qbadev_teryt.example:
+#        class: Qbadev\TerytBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

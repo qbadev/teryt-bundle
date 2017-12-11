@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+	<entity repository-class="Tkuska\TerytBundle\Repository\UlicaRepository"
+		name="Tkuska\TerytBundle\Entity\Ulica" table="teryt_ulice">
+		<id name="id" type="integer" column="id">
+			<generator strategy="AUTO" />
+		</id>
+		<field name="woj" type="string" column="WOJ" length="2" />
+		<field name="pow" type="string" column="POW" length="2" />
+		<field name="gmi" type="string" column="GMI" length="2" />
+		<field name="rodz_gmi" type="string" column="RODZ_GMI" length="1" />
+		<field name="cecha" type="string" column="CECHA" length="20" />
+		<field name="nazwa_1" type="string" column="NAZWA_1" length="250" />
+		<field name="nazwa_2" type="string" column="NAZWA_2" length="250" />
+		<field name="sym" type="string" column="SYM" length="7" />
+		<field name="sym_ul" type="string" column="SYM_UL" length="5" />
+		<field name="stan_na" type="date" column="STAN_NA" />
+                <many-to-one target-entity="Miejscowosc" field="miejscowosc" inversed-by="ulice" />
+                <indexes>
+                    <index columns="woj,pow,gmi,rodz_gmi,sym"/>
+                </indexes>
+
+	</entity>
+</doctrine-mapping>

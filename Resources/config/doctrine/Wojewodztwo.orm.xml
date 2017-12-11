@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+	xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+	<entity repository-class="Tkuska\TerytBundle\Repository\WojewodztwoRepository"
+		name="Tkuska\TerytBundle\Entity\Wojewodztwo" table="teryt_wojewodztwa">
+		<id name="id" type="integer" column="id">
+			<generator strategy="AUTO" />
+		</id>
+		<field name="woj" type="string" column="WOJ" length="2" />
+		<field name="nazwa" type="string" column="NAZWA" length="100" />
+		<field name="nazdod" type="string" column="NAZDOD" length="100" />
+		<field name="stan_na" type="date" column="STAN_NA" />
+                <one-to-many target-entity="Powiat" mapped-by="wojewodztwo" field="powiaty" />
+                <one-to-many target-entity="Gmina" mapped-by="wojewodztwo" field="gminy" />
+                <one-to-many target-entity="Miejscowosc" mapped-by="wojewodztwo" field="miejscowosci" />
+                <indexes>
+                    <index columns="woj"/>
+                </indexes>
+	</entity>
+</doctrine-mapping>

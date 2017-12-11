@@ -1,0 +1,29 @@
+{
+    "name": "qbadev/teryt-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony TerytBundle for Symfony2",
+    "keywords": ["teryt"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kuba Wolszczak",
+            "email": "kuba@hotaru.pl"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9 || ^7.0",
+        "symfony/form": "^2.8 || ^3.0",
+        "symfony/framework-bundle": "^2.8 || ^3.0"
+    },
+    "autoload": {
+        "psr-4": { "Qbadev\\TerytBundle": "" },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        }
+    }
+}
