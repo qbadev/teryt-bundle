@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
 
 class ZaladujGminyCommand extends ContainerAwareCommand
 {
@@ -93,17 +94,21 @@ class ZaladujGminyCommand extends ContainerAwareCommand
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         if (!$input->getArgument('sciezka')) {
-            $sciezka = $this->getHelper('dialog')->askAndValidate(
-                $output,
-                'Podaj ścieżkę do pliku XML:',
-                function ($sciezka) {
-                    if (empty($sciezka)) {
-                        throw new \Exception('Nie podano ścieżki');
-                    }
+          $helper = $this->getHelper('question');
 
-                    return $sciezka;
-                }
-            );
+          $question = new Question('Podaj ścieżkę do pliku XML:');
+          $question->setValidator(function ($answer) {
+              if (empty($sciezka))
+              {
+                throw new \RuntimeException(
+                    'Nie podano ścieżki'
+                );
+              }
+              return $answer;
+          });
+          $question->setMaxAttempts(2);
+
+          $sciezka = $helper->ask($input, $output, $question);
             $input->setArgument('sciezka', $sciezka);
         }
     }
